@@ -40,5 +40,6 @@ func _ready():
 
 
 func _on_devam_et_pressed():
+    OyunYT.ogrenci.ayarla()
     get_tree().change_scene_to_file("res://Sahneler/Oyun/OyunMenu.tscn")
 
