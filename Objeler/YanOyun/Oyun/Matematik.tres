@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Oyun" load_steps=3 format=3 uid="uid://l1o2t64u0ry5"]
+
+[ext_resource type="Resource" uid="uid://byllhavfiyxip" path="res://Objeler/YanOyun/Kitap/Matematik.tres" id="1_o1nma"]
+[ext_resource type="Script" path="res://Objeler/YanOyun/Oyun.gd" id="1_vk215"]
+
+[resource]
+script = ExtResource("1_vk215")
+Ad = "Sayısal"
+Puan = 5.0
+Oyun_Kitap = ExtResource("1_o1nma")
