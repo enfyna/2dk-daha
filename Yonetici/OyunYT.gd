@@ -15,7 +15,6 @@ func oyunu_baslat():
     
 func yan_oyun_oynanmaya_basladi():
     YanOyunOynaniyorMu = true
-    ogrenci.DersCalismaMotivasyonu = 1.0
 
 func yan_oyun_bitirildi():
     YanOyunOynaniyorMu = false
@@ -25,10 +24,7 @@ func yan_oyun_bitirildi():
         print(aks.Ad, aks.GecirilenSure)
         sure += aks.GecirilenSure
         verimlilik += aks.Puan * aks.GecirilenSure
-    print("sure", sure)
-    print("verim", verimlilik)
     var ogrenci_katsayi = verimlilik / sure
-    print("ok", ogrenci_katsayi)
     ToplamPuan += ceili(_YanOyunPuan * ogrenci_katsayi)
     return [sure, ogrenci_katsayi, _YanOyunPuan, ceili(_YanOyunPuan * ogrenci_katsayi)] 
 
