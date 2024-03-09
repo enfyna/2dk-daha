@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Aksiyon" load_steps=2 format=3 uid="uid://pwy8o628qq2t"]
+
+[ext_resource type="Script" path="res://Objeler/Ogrenci/Aksiyon.gd" id="1_b84kh"]
+
+[resource]
+script = ExtResource("1_b84kh")
+Ad = "Ders Çalıştı."
+Olasilik = 0.8
+Izdirap = 0.05
+MinMotivasyon = 0.2
+Puan = 1.0
+Tip = 0

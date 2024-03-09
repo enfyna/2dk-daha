@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Aksiyon" load_steps=2 format=3 uid="uid://cefa0s3y4ugk7"]
+
+[ext_resource type="Script" path="res://Objeler/Ogrenci/Aksiyon.gd" id="1_2oboq"]
+
+[resource]
+script = ExtResource("1_2oboq")
+Ad = "Uyudu."
+Olasilik = 0.2
+Izdirap = 0.05
+MinMotivasyon = 0.0
+Puan = 0.1
+Tip = 2
