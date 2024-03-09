@@ -5,7 +5,8 @@ extends Control
 @export var YanOyunContainer : VBoxContainer
 @export var YanOyunlar : Array
 @export var YanOyunOynaButonu : Button
-@export var OgrenciDersMotivasyon : Range
+@export var AkisSayisi : Label
+var AkisOrani : ProgressBar
 
 var YanOyun : Oyun
 
