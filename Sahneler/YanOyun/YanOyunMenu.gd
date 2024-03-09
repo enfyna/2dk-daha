@@ -1,7 +1,7 @@
 class_name YanOyunMenu
 extends Control
 
-@export var ButonContainer : HBoxContainer
+@export var ButonContainer : GridContainer
 @export var YanOyunContainer : VBoxContainer
 @export var YanOyunlar : Array
 @export var YanOyunOynaButonu : Button
