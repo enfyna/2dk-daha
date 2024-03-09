@@ -13,5 +13,6 @@ func _on_yan_oyun_oyna_pressed():
 
 
 func _on_motivasyon_arttır_pressed():
+    Saat.sure_azalt(600)
     OyunYT.ogrenci.ders_motivasyonu_degistir(1.0)
 
