@@ -10,7 +10,10 @@ enum Hiz {
 signal iki_dk_gecti
 
 var SaatFormat : String = "%02d:%02d"
-var SaatNode : Label
+var SaatNode : VBoxContainer
+var SaatText : Label
+var MotivasyonGosterge = ProgressBar
+var MotivasyonTween : Tween
 
 var OyunHizi : Hiz = Hiz.Orta
 var KalanZaman : float = 86400.0 / 4 #dk
@@ -20,9 +23,12 @@ var OyunBasladiMi : bool = false
 var SaatStr : String = "06:00"
 
 func saati_baslat():
-    var node = load("res://Objeler/Saat/Saat.tscn").instantiate()
-    SaatNode = node.get_node("Label").duplicate()
-    SaatNode.add_theme_font_size_override("font_size", 50)
+    SaatNode = load("res://Objeler/Saat/Saat.tscn").instantiate()
+    SaatText = SaatNode.get_node("Text")
+    SaatText.add_theme_font_size_override("font_size", 50)
+    MotivasyonGosterge = SaatNode.get_node("Motivasyon")
+    MotivasyonGosterge.value = 0.0
+    OyunYT.ogrenci.connect("ders_motivasyonu_degisti", ogrenci_motivasyon_guncelle)
     add_child(SaatNode)
     OyunBasladiMi = true
 
@@ -42,9 +48,24 @@ func _process(delta):
         floor(fmod(KalanZaman, 3600) / 60),
     ]
 
-    SaatNode.text = SaatStr
+    SaatText.text = SaatStr 
 
     return
+
+func ogrenci_motivasyon_guncelle():
+    MotivasyonTween = get_tree().create_tween()
+    MotivasyonTween.tween_property(
+        MotivasyonGosterge, "value", OyunYT.ogrenci.DersCalismaMotivasyonu, 0.1
+    )
+    MotivasyonTween.tween_property(
+        MotivasyonGosterge, "modulate", Color(
+                (1.0 - OyunYT.ogrenci.DersCalismaMotivasyonu) * 2.0,
+                OyunYT.ogrenci.DersCalismaMotivasyonu,
+                0.0,
+                1.0
+            ),
+            0.1
+    )
 
 func al():
     return SaatStr
