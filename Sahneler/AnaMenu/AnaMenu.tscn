@@ -1,0 +1,72 @@
+[gd_scene load_steps=3 format=3 uid="uid://dmjims6lqssv1"]
+
+[ext_resource type="Theme" uid="uid://bk4ivsh5xhlxm" path="res://Tema/AnaTema.tres" id="1_b1421"]
+[ext_resource type="Script" path="res://Sahneler/AnaMenu/AnaMenu.gd" id="2_7pt7o"]
+
+[node name="AnaMenu" type="Control" node_paths=PackedStringArray("ZorlukButonContainer")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_b1421")
+script = ExtResource("2_7pt7o")
+ZorlukButonContainer = NodePath("MarginContainer/VBoxContainer/HBoxContainer")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "2Dakika Daha!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control" type="Control" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Kolay" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+text = "Kolay
+"
+
+[node name="Orta" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+button_pressed = true
+text = "Orta"
+
+[node name="Zor" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+text = "Zor"
+
+[node name="OyunaBasla" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Oyuna Başla!"
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/Kolay" to="." method="_on_kolay_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/Orta" to="." method="_on_orta_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/Zor" to="." method="_on_zor_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/OyunaBasla" to="." method="_on_oyuna_basla_pressed"]
