@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Oyun" load_steps=3 format=3 uid="uid://bxhr6d8vivp5o"]
+
+[ext_resource type="Resource" uid="uid://bnrbb5i1qktsy" path="res://Objeler/YanOyun/Kitap/Cografya.tres" id="1_ryhe6"]
+[ext_resource type="Script" path="res://Objeler/YanOyun/Oyun.gd" id="1_w0g64"]
+
+[resource]
+script = ExtResource("1_w0g64")
+Ad = "Başkent"
+Puan = 5.0
+Oyun_Kitap = ExtResource("1_ryhe6")

@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="Kitap" load_steps=2 format=3 uid="uid://bnrbb5i1qktsy"]
+
+[ext_resource type="Script" path="res://Objeler/YanOyun/Kitap.gd" id="1_j37ap"]
+
+[resource]
+script = ExtResource("1_j37ap")
+Tip = 2

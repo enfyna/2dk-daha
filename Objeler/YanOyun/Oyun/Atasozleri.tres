@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Oyun" load_steps=3 format=3 uid="uid://id0bd5extr8k"]
+
+[ext_resource type="Script" path="res://Objeler/YanOyun/Oyun.gd" id="1_ewqt1"]
+[ext_resource type="Resource" uid="uid://2dtt3kckjqsy" path="res://Objeler/YanOyun/Kitap/Atasozleri.tres" id="1_y8num"]
+
+[resource]
+script = ExtResource("1_ewqt1")
+Ad = "Atasözleri"
+Puan = 5.0
+Oyun_Kitap = ExtResource("1_y8num")
