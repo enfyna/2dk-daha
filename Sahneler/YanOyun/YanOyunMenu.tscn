@@ -1,12 +1,14 @@
-[gd_scene load_steps=6 format=3 uid="uid://boee2epur03ye"]
+[gd_scene load_steps=8 format=3 uid="uid://boee2epur03ye"]
 
 [ext_resource type="Theme" uid="uid://bk4ivsh5xhlxm" path="res://Tema/AnaTema.tres" id="1_gqxiw"]
 [ext_resource type="Texture2D" uid="uid://ck2by5oady2su" path="res://Resimler/Ikon/SolOk.svg" id="2_56tcj"]
 [ext_resource type="Script" path="res://Sahneler/YanOyun/YanOyunMenu.gd" id="2_yjt87"]
 [ext_resource type="Resource" uid="uid://l1o2t64u0ry5" path="res://Objeler/YanOyun/Oyun/Matematik.tres" id="3_23q2a"]
 [ext_resource type="Resource" uid="uid://boha4w4g23irv" path="res://Objeler/YanOyun/Oyun/Klavye.tres" id="4_jgvxs"]
+[ext_resource type="Resource" uid="uid://bxhr6d8vivp5o" path="res://Objeler/YanOyun/Oyun/Cografya.tres" id="5_vk6im"]
+[ext_resource type="Resource" uid="uid://id0bd5extr8k" path="res://Objeler/YanOyun/Oyun/Atasozleri.tres" id="6_xf5pm"]
 
-[node name="YanOyunMenu" type="Control" node_paths=PackedStringArray("ButonContainer", "YanOyunContainer", "YanOyunOynaButonu")]
+[node name="YanOyunMenu" type="Control" node_paths=PackedStringArray("ButonContainer", "YanOyunContainer", "YanOyunOynaButonu", "AkisSayisi")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -17,8 +19,9 @@ theme = ExtResource("1_gqxiw")
 script = ExtResource("2_yjt87")
 ButonContainer = NodePath("HBoxContainer/MarginContainer/YanOyunButonContainer")
 YanOyunContainer = NodePath("HBoxContainer/MarginContainer/YanOyunContainer")
-YanOyunlar = [ExtResource("3_23q2a"), ExtResource("4_jgvxs")]
+YanOyunlar = [ExtResource("3_23q2a"), ExtResource("4_jgvxs"), ExtResource("5_vk6im"), ExtResource("6_xf5pm")]
 YanOyunOynaButonu = NodePath("HBoxContainer/CenterContainer2/Control/OgrenciKontrolEt")
+AkisSayisi = NodePath("HBoxContainer/MarginContainer/YanOyunContainer/Control3/AkisSayisi")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 1
@@ -72,12 +75,26 @@ layout_mode = 2
 [node name="Control3" type="VBoxContainer" parent="HBoxContainer/MarginContainer/YanOyunContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_constants/separation = 0
 
 [node name="AkisSayisi" type="Label" parent="HBoxContainer/MarginContainer/YanOyunContainer/Control3"]
 layout_mode = 2
 text = "1"
 horizontal_alignment = 1
+
+[node name="AkisOrani" type="ProgressBar" parent="HBoxContainer/MarginContainer/YanOyunContainer/Control3/AkisSayisi"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -268.0
+offset_top = -4.0
+offset_right = 268.0
+grow_horizontal = 2
+grow_vertical = 0
+max_value = 1.0
+show_percentage = false
 
 [node name="AkisHali" type="Label" parent="HBoxContainer/MarginContainer/YanOyunContainer/Control3"]
 layout_mode = 2
@@ -96,6 +113,7 @@ layout_mode = 2
 text = "Soru"
 horizontal_alignment = 1
 vertical_alignment = 1
+autowrap_mode = 2
 
 [node name="Sonuc" type="HBoxContainer" parent="HBoxContainer/MarginContainer/YanOyunContainer"]
 layout_mode = 2
