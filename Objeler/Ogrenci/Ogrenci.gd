@@ -1,24 +1,25 @@
 class_name Ogrenci
 extends Resource
 
+signal ders_motivasyonu_degisti
+
 var Ad : String
-var DersCalismaMotivasyonu : float = 1.0
+var DersCalismaMotivasyonu : float = 0.0
 
 const AksiyonKlasor = "res://Objeler/Ogrenci/Aksiyon/"
 
 var Aksiyonlar : Array
-var AksiyonToplamOlasilik : float
 var bulunulan_aksiyon : Aksiyon
 
 func ayarla():
+    Aksiyonlar.clear()
     var dir = DirAccess.open(AksiyonKlasor)
     for klasor in dir.get_files():
         var aksiyon : Aksiyon = ResourceLoader.load(AksiyonKlasor + klasor)
         Aksiyonlar.append(aksiyon)
-        AksiyonToplamOlasilik += aksiyon.Olasilik
         if aksiyon.Tip == Aksiyon.Tipler.Ders:
             bulunulan_aksiyon = aksiyon
-        
+
 func aksiyon_basla():
     var sans = randf() 
     var aksiyon_degisti : bool = false
@@ -29,8 +30,13 @@ func aksiyon_basla():
             if not aksiyon_degisti and aks.Tip == Aksiyon.Tipler.Ders:
                 bulunulan_aksiyon = aks
                 aksiyon_degisti = true
+                ders_motivasyonu_degistir(-0.05)
             continue
         elif not aksiyon_degisti and aks.Olasilik > sans:
+            if aks.Tip == Aksiyon.Tipler.Ders:
+                if DersCalismaMotivasyonu < 0.2:
+                    continue
+                ders_motivasyonu_degistir(-0.05)
             bulunulan_aksiyon = aks
             aksiyon_degisti = true
             continue
@@ -38,11 +44,18 @@ func aksiyon_basla():
             aks.Olasilik += 0.03
         elif aks.Tip == Aksiyon.Tipler.Ders:
             aks.Olasilik += 0.01
+    if not aksiyon_degisti:
+        aksiyon_basla()
 
 func ders_calis():
     for aks : Aksiyon in Aksiyonlar:
         if aks.Tip == Aksiyon.Tipler.Ders:
             bulunulan_aksiyon = aks
+
+func ders_motivasyonu_degistir(deger : float):
+    DersCalismaMotivasyonu += deger
+    DersCalismaMotivasyonu = clampf(DersCalismaMotivasyonu, 0.0, 1.0)
+    emit_signal("ders_motivasyonu_degisti")
 
 func aksiyon_bitir():
     bulunulan_aksiyon.GecirilenSure += 2
