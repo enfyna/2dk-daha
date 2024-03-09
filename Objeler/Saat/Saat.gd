@@ -67,5 +67,8 @@ func ogrenci_motivasyon_guncelle():
             0.1
     )
 
+func sure_azalt(saniye : int):
+    KalanZaman -= saniye
+
 func al():
     return SaatStr
