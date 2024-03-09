@@ -13,11 +13,11 @@ config_version=5
 config/name="2dk Daha"
 run/main_scene="res://Sahneler/AnaMenu/AnaMenu.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
-config/icon="res://icon.svg"
 
 [autoload]
 
 Saat="*res://Objeler/Saat/Saat.gd"
+OyunYT="*res://Yonetici/OyunYT.gd"
 
 [display]
 
