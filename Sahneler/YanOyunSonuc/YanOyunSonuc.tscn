@@ -1,0 +1,49 @@
+[gd_scene load_steps=3 format=3 uid="uid://dbpnxl3ybw4w3"]
+
+[ext_resource type="Theme" uid="uid://bk4ivsh5xhlxm" path="res://Tema/AnaTema.tres" id="1_fmwyt"]
+[ext_resource type="Script" path="res://Sahneler/YanOyunSonuc/YanOyunSonuc.gd" id="1_odwwq"]
+
+[node name="YanOyunSonuc" type="Control" node_paths=PackedStringArray("YaziContainer")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_fmwyt")
+script = ExtResource("1_odwwq")
+YaziContainer = NodePath("HBoxContainer/YaziContainer")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control" type="Control" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="YaziContainer" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="Control2" type="Control" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="DevamEt" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -8.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Devam Et"
+
+[connection signal="pressed" from="DevamEt" to="." method="_on_devam_et_pressed"]
