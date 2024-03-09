@@ -41,7 +41,7 @@ func soru_al(zorluk : Kitap.Zorluk) -> Kitap.Soru:
          return soru 
     if Tip == Kitap.Tipi.Cografya:
         if Sorular == null:
-            var file = FileAccess.open("res://Objeler/YanOyun/KaynaKaynak/Cografya.json", FileAccess.READ)
+            var file = FileAccess.open("res://Objeler/YanOyun/Kaynak/Cografya.json", FileAccess.READ)
             var data = file.get_as_text()
             Sorular = JSON.parse_string(data)
 
