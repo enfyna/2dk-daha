@@ -10,3 +10,8 @@ func _ready():
 func _on_yan_oyun_oyna_pressed():
     OyunYT.yan_oyun_oynanmaya_basladi()
     get_tree().change_scene_to_file("res://Sahneler/YanOyun/YanOyunMenu.tscn")
+
+
+func _on_motivasyon_arttır_pressed():
+    OyunYT.ogrenci.ders_motivasyonu_degistir(1.0)
+

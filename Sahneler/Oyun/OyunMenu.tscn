@@ -39,6 +39,11 @@ layout_mode = 2
 [node name="TextureRect" type="TextureRect" parent="HBoxContainer/CenterContainer/VBoxContainer"]
 layout_mode = 2
 texture = ExtResource("2_tj1qe")
+stretch_mode = 3
+
+[node name="MotivasyonArttır" type="Button" parent="HBoxContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Motivasyonunu Arttır"
 
 [node name="Puan" type="Label" parent="HBoxContainer/CenterContainer/VBoxContainer"]
 layout_mode = 2
@@ -64,4 +69,5 @@ flat = true
 icon_alignment = 1
 expand_icon = true
 
+[connection signal="pressed" from="HBoxContainer/CenterContainer/VBoxContainer/MotivasyonArttır" to="." method="_on_motivasyon_arttır_pressed"]
 [connection signal="pressed" from="HBoxContainer/CenterContainer2/Control/YanOyunOyna" to="." method="_on_yan_oyun_oyna_pressed"]
