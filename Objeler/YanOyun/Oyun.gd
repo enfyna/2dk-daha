@@ -3,6 +3,7 @@ extends Resource
 
 signal basarili(puan : float)
 signal hatali(puan : float)
+signal akis_orani(zorluk : int, oran : float, renk : Color)
 
 @export var Ad : String
 @export var Puan : float
