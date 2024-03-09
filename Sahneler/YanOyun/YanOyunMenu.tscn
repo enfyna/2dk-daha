@@ -1,0 +1,127 @@
+[gd_scene load_steps=6 format=3 uid="uid://boee2epur03ye"]
+
+[ext_resource type="Theme" uid="uid://bk4ivsh5xhlxm" path="res://Tema/AnaTema.tres" id="1_gqxiw"]
+[ext_resource type="Texture2D" uid="uid://ck2by5oady2su" path="res://Resimler/Ikon/SolOk.svg" id="2_56tcj"]
+[ext_resource type="Script" path="res://Sahneler/YanOyun/YanOyunMenu.gd" id="2_yjt87"]
+[ext_resource type="Resource" uid="uid://l1o2t64u0ry5" path="res://Objeler/YanOyun/Oyun/Matematik.tres" id="3_23q2a"]
+[ext_resource type="Resource" uid="uid://boha4w4g23irv" path="res://Objeler/YanOyun/Oyun/Klavye.tres" id="4_jgvxs"]
+
+[node name="YanOyunMenu" type="Control" node_paths=PackedStringArray("ButonContainer", "YanOyunContainer", "YanOyunOynaButonu")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_gqxiw")
+script = ExtResource("2_yjt87")
+ButonContainer = NodePath("HBoxContainer/MarginContainer/YanOyunButonContainer")
+YanOyunContainer = NodePath("HBoxContainer/MarginContainer/YanOyunContainer")
+YanOyunlar = [ExtResource("3_23q2a"), ExtResource("4_jgvxs")]
+YanOyunOynaButonu = NodePath("HBoxContainer/CenterContainer2/Control/OgrenciKontrolEt")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer2" type="MarginContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.5
+
+[node name="Control" type="Control" parent="HBoxContainer/CenterContainer2"]
+layout_mode = 2
+
+[node name="OgrenciKontrolEt" type="Button" parent="HBoxContainer/CenterContainer2/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+icon = ExtResource("2_56tcj")
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 100
+
+[node name="YanOyunButonContainer" type="HBoxContainer" parent="HBoxContainer/MarginContainer"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="Temp" type="Button" parent="HBoxContainer/MarginContainer/YanOyunButonContainer"]
+layout_mode = 2
+text = "Temp
+"
+
+[node name="YanOyunContainer" type="VBoxContainer" parent="HBoxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Control3" type="VBoxContainer" parent="HBoxContainer/MarginContainer/YanOyunContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 0
+
+[node name="AkisSayisi" type="Label" parent="HBoxContainer/MarginContainer/YanOyunContainer/Control3"]
+layout_mode = 2
+text = "1"
+horizontal_alignment = 1
+
+[node name="AkisHali" type="Label" parent="HBoxContainer/MarginContainer/YanOyunContainer/Control3"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "Akış Hali"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control" type="Control" parent="HBoxContainer/MarginContainer/YanOyunContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.5
+
+[node name="Soru" type="Label" parent="HBoxContainer/MarginContainer/YanOyunContainer"]
+layout_mode = 2
+text = "Soru"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Sonuc" type="HBoxContainer" parent="HBoxContainer/MarginContainer/YanOyunContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="yesil" type="ColorRect" parent="HBoxContainer/MarginContainer/YanOyunContainer/Sonuc"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 8
+color = Color(0, 0.607843, 0, 1)
+
+[node name="kirmizi" type="ColorRect" parent="HBoxContainer/MarginContainer/YanOyunContainer/Sonuc"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 8
+color = Color(0.6, 0, 0, 1)
+
+[node name="Cevap" type="LineEdit" parent="HBoxContainer/MarginContainer/YanOyunContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Control2" type="Control" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.5
+
+[connection signal="pressed" from="HBoxContainer/CenterContainer2/Control/OgrenciKontrolEt" to="." method="_on_ogrenci_kontrol_et_pressed"]
