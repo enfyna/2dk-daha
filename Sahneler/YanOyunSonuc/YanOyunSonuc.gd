@@ -20,7 +20,7 @@ func _ready():
         if aks.GecirilenSure <= 0:
             continue
         var temp = lbl.duplicate()
-        temp.text = "%s Dk %s" % [
+        temp.text = "%3d Dk %s" % [
             aks.GecirilenSure,
             aks.Ad,
         ]
