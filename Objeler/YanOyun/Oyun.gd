@@ -1,8 +1,7 @@
 class_name Oyun
 extends Resource
 
-signal basarili(puan : float)
-signal hatali(puan : float)
+signal soru_cevaplandi(cevap : String, puan : int)
 signal akis_orani(zorluk : int, oran : float, renk : Color)
 
 @export var Ad : String

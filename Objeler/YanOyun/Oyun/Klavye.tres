@@ -5,6 +5,6 @@
 
 [resource]
 script = ExtResource("1_kfbw5")
-Ad = "Sözel"
+Ad = "Vim"
 Puan = 5.0
 Oyun_Kitap = ExtResource("1_lvkix")
