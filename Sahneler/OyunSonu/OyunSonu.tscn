@@ -1,0 +1,105 @@
+[gd_scene load_steps=7 format=3 uid="uid://c3725wtady6ck"]
+
+[ext_resource type="Theme" uid="uid://bk4ivsh5xhlxm" path="res://Tema/AnaTema.tres" id="1_h7l3l"]
+[ext_resource type="Texture2D" uid="uid://csjian0xb8lqq" path="res://Resimler/Sınıf/Terlik.png" id="2_j0jhp"]
+[ext_resource type="Script" path="res://Sahneler/OyunSonu/OyunSonu.gd" id="2_ukjjk"]
+[ext_resource type="Texture2D" uid="uid://cugd3l4h0ccvl" path="res://Resimler/Sınıf/saat.png" id="2_v42dk"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4vp03"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sq5o5"]
+
+[node name="OyunSonu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_h7l3l")
+script = ExtResource("2_ukjjk")
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_j0jhp")
+
+[node name="Basarili" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_v42dk")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 70
+theme_override_constants/margin_top = 70
+theme_override_constants/margin_right = 70
+theme_override_constants/margin_bottom = 70
+
+[node name="Control2" type="ColorRect" parent="MarginContainer"]
+layout_mode = 2
+color = Color(0, 0, 0, 0.835294)
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/Control2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 70
+theme_override_constants/margin_top = 70
+theme_override_constants/margin_right = 70
+theme_override_constants/margin_bottom = 70
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/Control2/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/Control2/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 60
+theme_override_styles/normal = SubResource("StyleBoxEmpty_4vp03")
+text = "Oyunumu Oynadığınız İçin Teşekkürler!
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control" type="Control" parent="MarginContainer/Control2/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+
+[node name="OyunSonuYazısı" type="Label" parent="MarginContainer/Control2/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/normal = SubResource("StyleBoxEmpty_sq5o5")
+text = "Kazandın!
+Toplam %s puan alarak öğrencini başarılı bir şekilde sınavına hazırlayabildin!
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/Control2/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 300
+theme_override_constants/margin_right = 300
+
+[node name="Ayrıl" type="Button" parent="MarginContainer/Control2/MarginContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+theme_type_variation = &"MaviButon"
+text = "Ayrıl"
+
+[connection signal="pressed" from="MarginContainer/Control2/MarginContainer/VBoxContainer/MarginContainer/Ayrıl" to="." method="_on_ayrıl_pressed"]
