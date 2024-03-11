@@ -1,14 +1,22 @@
-[gd_scene load_steps=8 format=3 uid="uid://boee2epur03ye"]
+[gd_scene load_steps=13 format=3 uid="uid://boee2epur03ye"]
 
 [ext_resource type="Theme" uid="uid://bk4ivsh5xhlxm" path="res://Tema/AnaTema.tres" id="1_gqxiw"]
-[ext_resource type="Texture2D" uid="uid://ck2by5oady2su" path="res://Resimler/Ikon/SolOk.svg" id="2_56tcj"]
 [ext_resource type="Script" path="res://Sahneler/YanOyun/YanOyunMenu.gd" id="2_yjt87"]
 [ext_resource type="Resource" uid="uid://l1o2t64u0ry5" path="res://Objeler/YanOyun/Oyun/Matematik.tres" id="3_23q2a"]
 [ext_resource type="Resource" uid="uid://boha4w4g23irv" path="res://Objeler/YanOyun/Oyun/Klavye.tres" id="4_jgvxs"]
 [ext_resource type="Resource" uid="uid://bxhr6d8vivp5o" path="res://Objeler/YanOyun/Oyun/Cografya.tres" id="5_vk6im"]
 [ext_resource type="Resource" uid="uid://id0bd5extr8k" path="res://Objeler/YanOyun/Oyun/Atasozleri.tres" id="6_xf5pm"]
+[ext_resource type="Resource" uid="uid://gk7uoms77kd7" path="res://Objeler/YanOyun/Oyun/ZitKelimeler.tres" id="7_5v8fx"]
+[ext_resource type="Texture2D" uid="uid://b8g8htac4likq" path="res://Resimler/Sınıf/tahta.png" id="7_uifx8"]
+[ext_resource type="Resource" uid="uid://2473ol3acgva" path="res://Objeler/YanOyun/Oyun/Kimya.tres" id="8_djtn0"]
 
-[node name="YanOyunMenu" type="Control" node_paths=PackedStringArray("ButonContainer", "YanOyunContainer", "YanOyunOynaButonu", "AkisSayisi")]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kul3j"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_x6nvf"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6rmbq"]
+
+[node name="YanOyunMenu" type="Control" node_paths=PackedStringArray("ButonContainer", "YanOyunOynaButonu", "AkisSayisi", "PuanGosterge", "CevapGosterge", "Particles")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -18,10 +26,21 @@ grow_vertical = 2
 theme = ExtResource("1_gqxiw")
 script = ExtResource("2_yjt87")
 ButonContainer = NodePath("HBoxContainer/MarginContainer/YanOyunButonContainer")
-YanOyunContainer = NodePath("HBoxContainer/MarginContainer/YanOyunContainer")
-YanOyunlar = [ExtResource("3_23q2a"), ExtResource("4_jgvxs"), ExtResource("5_vk6im"), ExtResource("6_xf5pm")]
-YanOyunOynaButonu = NodePath("HBoxContainer/CenterContainer2/Control/OgrenciKontrolEt")
-AkisSayisi = NodePath("HBoxContainer/MarginContainer/YanOyunContainer/Control3/AkisSayisi")
+YanOyunlar = [ExtResource("3_23q2a"), ExtResource("4_jgvxs"), ExtResource("5_vk6im"), ExtResource("6_xf5pm"), ExtResource("7_5v8fx"), ExtResource("8_djtn0")]
+YanOyunOynaButonu = NodePath("HBoxContainer/Control/Control/OgrenciKontrolEt")
+AkisSayisi = NodePath("HBoxContainer/Control2/Control3/AspectRatioContainer/AkisSayisi")
+PuanGosterge = NodePath("HBoxContainer/Control2/Control3/MarginContainer/VBoxContainer/Puan")
+CevapGosterge = NodePath("HBoxContainer/MarginContainer/YanOyunContainer/SonucCevap")
+Particles = NodePath("HBoxContainer/Control2/Control3/AspectRatioContainer/particles")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_uifx8")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 1
@@ -31,25 +50,36 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="CenterContainer2" type="MarginContainer" parent="HBoxContainer"]
+[node name="Control" type="MarginContainer" parent="HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_stretch_ratio = 0.5
+theme_override_constants/margin_left = 70
+theme_override_constants/margin_top = 70
+theme_override_constants/margin_right = 70
+theme_override_constants/margin_bottom = 70
 
-[node name="Control" type="Control" parent="HBoxContainer/CenterContainer2"]
+[node name="Control" type="Control" parent="HBoxContainer/Control"]
 layout_mode = 2
 
-[node name="OgrenciKontrolEt" type="Button" parent="HBoxContainer/CenterContainer2/Control"]
+[node name="OgrenciKontrolEt" type="Button" parent="HBoxContainer/Control/Control"]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
+anchors_preset = 2
+anchor_top = 1.0
 anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-icon = ExtResource("2_56tcj")
-flat = true
+offset_top = -100.0
+offset_right = 200.0
+grow_vertical = 0
+text = "Öğrencini Kontrol
+Et"
 icon_alignment = 1
 expand_icon = true
+
+[node name="ConfirmationDialog" type="ConfirmationDialog" parent="HBoxContainer/Control/Control/OgrenciKontrolEt"]
+title = "Emin Misin?"
+initial_position = 2
+size = Vector2i(200, 114)
+ok_button_text = "Evet"
+cancel_button_text = "Hayır"
 
 [node name="MarginContainer" type="MarginContainer" parent="HBoxContainer"]
 layout_mode = 2
@@ -60,8 +90,12 @@ theme_override_constants/margin_right = 50
 theme_override_constants/margin_bottom = 100
 
 [node name="YanOyunButonContainer" type="GridContainer" parent="HBoxContainer/MarginContainer"]
+unique_name_in_owner = true
+visible = false
 layout_mode = 2
-columns = 3
+theme_override_constants/h_separation = 20
+theme_override_constants/v_separation = 20
+columns = 2
 
 [node name="Temp" type="Button" parent="HBoxContainer/MarginContainer/YanOyunButonContainer"]
 layout_mode = 2
@@ -71,55 +105,31 @@ text = "Temp
 "
 
 [node name="YanOyunContainer" type="VBoxContainer" parent="HBoxContainer/MarginContainer"]
-visible = false
+unique_name_in_owner = true
 layout_mode = 2
-
-[node name="Control3" type="VBoxContainer" parent="HBoxContainer/MarginContainer/YanOyunContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="AkisSayisi" type="Label" parent="HBoxContainer/MarginContainer/YanOyunContainer/Control3"]
-layout_mode = 2
-text = "1"
-horizontal_alignment = 1
-
-[node name="AkisOrani" type="ProgressBar" parent="HBoxContainer/MarginContainer/YanOyunContainer/Control3/AkisSayisi"]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -268.0
-offset_top = -4.0
-offset_right = 268.0
-grow_horizontal = 2
-grow_vertical = 0
-max_value = 1.0
-show_percentage = false
-
-[node name="AkisHali" type="Label" parent="HBoxContainer/MarginContainer/YanOyunContainer/Control3"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 25
-text = "Akış Hali"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Control" type="Control" parent="HBoxContainer/MarginContainer/YanOyunContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-size_flags_stretch_ratio = 0.5
 
 [node name="Soru" type="Label" parent="HBoxContainer/MarginContainer/YanOyunContainer"]
+custom_minimum_size = Vector2(0, 300)
 layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_kul3j")
 text = "Soru"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
+[node name="SonucCevap" type="Label" parent="HBoxContainer/MarginContainer/YanOyunContainer"]
+layout_mode = 2
+theme_type_variation = &"Yanlis"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Cevap" type="LineEdit" parent="HBoxContainer/MarginContainer/YanOyunContainer"]
+layout_mode = 2
+placeholder_text = "Cevabını buraya yaz.."
+alignment = 1
+
 [node name="Sonuc" type="HBoxContainer" parent="HBoxContainer/MarginContainer/YanOyunContainer"]
 layout_mode = 2
-size_flags_vertical = 3
 
 [node name="yesil" type="ColorRect" parent="HBoxContainer/MarginContainer/YanOyunContainer/Sonuc"]
 custom_minimum_size = Vector2(0, 20)
@@ -135,13 +145,105 @@ size_flags_horizontal = 3
 size_flags_vertical = 8
 color = Color(0.6, 0, 0, 1)
 
-[node name="Cevap" type="LineEdit" parent="HBoxContainer/MarginContainer/YanOyunContainer"]
+[node name="Control" type="Control" parent="HBoxContainer/MarginContainer/YanOyunContainer"]
 layout_mode = 2
-alignment = 1
-
-[node name="Control2" type="Control" parent="HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
+size_flags_vertical = 3
 size_flags_stretch_ratio = 0.5
 
-[connection signal="pressed" from="HBoxContainer/CenterContainer2/Control/OgrenciKontrolEt" to="." method="_on_ogrenci_kontrol_et_pressed"]
+[node name="PasGec" type="Button" parent="HBoxContainer/MarginContainer/YanOyunContainer"]
+layout_mode = 2
+theme_type_variation = &"KirmiziButon"
+text = "Pas Geç"
+
+[node name="Control2" type="MarginContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 70
+theme_override_constants/margin_top = 70
+theme_override_constants/margin_right = 70
+theme_override_constants/margin_bottom = 70
+
+[node name="Control3" type="VBoxContainer" parent="HBoxContainer/Control2"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="HBoxContainer/Control2/Control3"]
+layout_mode = 2
+
+[node name="particles" type="CPUParticles2D" parent="HBoxContainer/Control2/Control3/AspectRatioContainer"]
+position = Vector2(143, 52)
+emitting = false
+amount = 250
+lifetime = 3.0
+one_shot = true
+preprocess = 0.5
+speed_scale = 2.0
+explosiveness = 0.5
+randomness = 0.2
+direction = Vector2(1, 1)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 30.0
+initial_velocity_max = 50.0
+angular_velocity_max = 10.0
+orbit_velocity_min = 0.1
+orbit_velocity_max = 0.5
+angle_max = 30.0
+scale_amount_max = 5.0
+hue_variation_max = 1.0
+
+[node name="AkisSayisi" type="Label" parent="HBoxContainer/Control2/Control3/AspectRatioContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AkisOrani" type="ProgressBar" parent="HBoxContainer/Control2/Control3/AspectRatioContainer/AkisSayisi"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -4.0
+grow_horizontal = 2
+grow_vertical = 0
+max_value = 1.0
+show_percentage = false
+
+[node name="AkisHali" type="Label" parent="HBoxContainer/Control2/Control3"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxEmpty_x6nvf")
+text = "Akış Hali"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/Control2/Control3"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 70
+theme_override_constants/margin_top = 70
+theme_override_constants/margin_right = 70
+theme_override_constants/margin_bottom = 70
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/Control2/Control3/MarginContainer"]
+layout_mode = 2
+
+[node name="Puan" type="Label" parent="HBoxContainer/Control2/Control3/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxEmpty_6rmbq")
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="text" type="Label" parent="HBoxContainer/Control2/Control3/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Puan"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="HBoxContainer/Control/Control/OgrenciKontrolEt" to="." method="_on_ogrenci_kontrol_et_pressed"]
+[connection signal="pressed" from="HBoxContainer/MarginContainer/YanOyunContainer/PasGec" to="." method="_on_pas_gec_pressed"]
