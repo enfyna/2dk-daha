@@ -4,4 +4,5 @@
 
 [resource]
 script = ExtResource("1_0o3b4")
-Tip = 3
+Tip = 2
+Ad = "Atasozleri"

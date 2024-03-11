@@ -4,8 +4,6 @@ extends Resource
 enum Tipi {
     Matematik,
     Klavye,
-    Cografya,
-    Atasozleri,
     Ozel,
 }
 
@@ -20,6 +18,7 @@ class Soru:
     var Cevap : String
 
 @export var Tip : Kitap.Tipi
+@export var Ad : String
 var Sorular 
 
 func soru_al(zorluk : Kitap.Zorluk) -> Kitap.Soru:
@@ -39,20 +38,9 @@ func soru_al(zorluk : Kitap.Zorluk) -> Kitap.Soru:
          soru.Soru = rasgele_kelime
          soru.Cevap = rasgele_kelime
          return soru 
-    if Tip == Kitap.Tipi.Cografya:
+    if Tip == Kitap.Tipi.Ozel:
         if Sorular == null:
-            var file = FileAccess.open("res://Objeler/YanOyun/Kaynak/Cografya.json", FileAccess.READ)
-            var data = file.get_as_text()
-            Sorular = JSON.parse_string(data)
-
-        var soru = Soru.new()
-        var rasgele_sayi = randi() % Sorular.size()
-        soru.Soru = Sorular[rasgele_sayi]["Soru"]
-        soru.Cevap = Sorular[rasgele_sayi]["Cevap"]
-        return soru
-    if Tip == Kitap.Tipi.Atasozleri:
-        if Sorular == null:
-            var file = FileAccess.open("res://Objeler/YanOyun/Kaynak/Atasozleri.json", FileAccess.READ)
+            var file = FileAccess.open("res://Objeler/YanOyun/Kaynak/"+Ad+".json", FileAccess.READ)
             var data = file.get_as_text()
             Sorular = JSON.parse_string(data)
 
