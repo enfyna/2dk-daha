@@ -14,8 +14,10 @@ var bulunulan_aksiyon : Aksiyon
 func ayarla():
     Aksiyonlar.clear()
     var dir = DirAccess.open(AksiyonKlasor)
-    for klasor in dir.get_files():
-        var aksiyon : Aksiyon = ResourceLoader.load(AksiyonKlasor + klasor)
+    for dosya in dir.get_files():
+        if dosya.ends_with(".remap"):
+            dosya = dosya.replace(".remap", "")
+        var aksiyon : Aksiyon = ResourceLoader.load(AksiyonKlasor + dosya)
         Aksiyonlar.append(aksiyon)
         if aksiyon.Tip == Aksiyon.Tipler.Ders:
             bulunulan_aksiyon = aksiyon
