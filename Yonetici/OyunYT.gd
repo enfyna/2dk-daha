@@ -7,8 +7,9 @@ var YanOyunOynaniyorMu : bool = false
 var ToplamPuan : int = 0
 var _YanOyunPuan : float = 0.0
 
-func oyunu_baslat():
+func oyunu_baslat(ogrenci_ad : String):
     ogrenci = Ogrenci.new()
+    ogrenci.Ad = ogrenci_ad
     ogrenci.ayarla()
     Saat.connect("iki_dk_gecti", iki_dk_gecti)
     Saat.saati_baslat()
