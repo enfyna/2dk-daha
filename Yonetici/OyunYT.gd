@@ -32,3 +32,23 @@ func iki_dk_gecti():
     if YanOyunOynaniyorMu:
         ogrenci.aksiyon_bitir()
         ogrenci.aksiyon_basla()
+
+func sahne_degistir(sahne_adi : String, mod : int = 0):
+    var sahne = load(sahne_adi).instantiate()
+    var suanki_sahne = get_tree().current_scene
+    var tween = get_tree().create_tween()
+    tween.set_parallel()
+    if mod == 0:
+        sahne.position.x = suanki_sahne.size.x
+        get_tree().root.add_child(sahne)
+        tween.tween_property(suanki_sahne, "position:x", -suanki_sahne.size.x, 0.2)
+        tween.tween_property(sahne,"position:x", 0, 0.2)
+    elif mod == 1:
+        sahne.modulate = Color(0,0,0,0)
+        get_tree().root.add_child(sahne)
+        tween.tween_property(suanki_sahne, "modulate", Color(0,0,0), 0.2)
+        tween.tween_property(sahne,"modulate", Color(1,1,1,1), 0.2)
+        
+    tween.set_parallel(false)
+    tween.tween_callback(func(): suanki_sahne.queue_free())
+    get_tree().current_scene = sahne
