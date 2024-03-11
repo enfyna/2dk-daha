@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="Kitap" load_steps=2 format=3 uid="uid://cavc5ubqdng83"]
+
+[ext_resource type="Script" path="res://Objeler/YanOyun/Kitap.gd" id="1_m5o8t"]
+
+[resource]
+script = ExtResource("1_m5o8t")
+Tip = 2
+Ad = "Kimya"
