@@ -10,6 +10,7 @@ func _ready():
     var akslar = []
     var res = OyunYT.yan_oyun_bitirildi()
     var lbl = Label.new()
+    lbl.theme_type_variation = "NotLabel"
     lbl.add_theme_font_size_override("font_size", 25)
     lbl.text = "Ders anlattığın %s dakikada öğrencin bunları yaptı :" % [
         res[0],
@@ -41,5 +42,5 @@ func _ready():
 
 func _on_devam_et_pressed():
     OyunYT.ogrenci.ayarla()
-    get_tree().change_scene_to_file("res://Sahneler/Oyun/OyunMenu.tscn")
+    OyunYT.sahne_degistir("res://Sahneler/Oyun/OyunMenu.tscn")
 
