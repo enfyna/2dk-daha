@@ -1,7 +1,12 @@
-[gd_scene load_steps=3 format=3 uid="uid://dmjims6lqssv1"]
+[gd_scene load_steps=6 format=3 uid="uid://dmjims6lqssv1"]
 
 [ext_resource type="Theme" uid="uid://bk4ivsh5xhlxm" path="res://Tema/AnaTema.tres" id="1_b1421"]
 [ext_resource type="Script" path="res://Sahneler/AnaMenu/AnaMenu.gd" id="2_7pt7o"]
+[ext_resource type="Texture2D" uid="uid://betysmvy2gv5o" path="res://Resimler/Sınıf/sınıfbos.png" id="3_1er8y"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_b6k51"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lp1bn"]
 
 [node name="AnaMenu" type="Control" node_paths=PackedStringArray("ZorlukButonContainer")]
 layout_mode = 3
@@ -12,7 +17,16 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_b1421")
 script = ExtResource("2_7pt7o")
-ZorlukButonContainer = NodePath("MarginContainer/VBoxContainer/HBoxContainer")
+ZorlukButonContainer = NodePath("MarginContainer/Control2/MarginContainer/VBoxContainer/HBoxContainer")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_1er8y")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -26,47 +40,100 @@ theme_override_constants/margin_top = 50
 theme_override_constants/margin_right = 50
 theme_override_constants/margin_bottom = 50
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+[node name="Control2" type="ColorRect" parent="MarginContainer"]
+layout_mode = 2
+color = Color(0, 0, 0, 0.835294)
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/Control2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 70
+theme_override_constants/margin_top = 70
+theme_override_constants/margin_right = 70
+theme_override_constants/margin_bottom = 70
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/Control2/MarginContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="MarginContainer/Control2/MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "2Dakika Daha!"
+theme_override_font_sizes/font_size = 60
+theme_override_styles/normal = SubResource("StyleBoxEmpty_b6k51")
+text = "2 Dakika Daha!"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Control" type="Control" parent="MarginContainer/VBoxContainer"]
+[node name="Control" type="Control" parent="MarginContainer/Control2/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/Control2/MarginContainer/VBoxContainer/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="Label" type="Label" parent="MarginContainer/Control2/MarginContainer/VBoxContainer/Control/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_styles/normal = SubResource("StyleBoxEmpty_lp1bn")
+text = "Şuan öğrencine özel dersler vererek 6 saat sonraki sınavında başarılı olmasını sağlamalısın.
+Verdiğin her derste sorulara verdiğin doğru cevaplarla puan kazanırsın.
+Eğer dersi çok uzun tutarsan öğrencinin canı sıkılır ve dersi dinlememeye başlar.
+Dersi bitirdiğinde aldığın puan ve öğrencinin verimliliği çarpılır ve toplam puanına eklenir.
+Ders aralarında öğrencinin motivasyonunu arttırabilirsin.
+(Oyunu kazanmak için 100 toplam puan kazanman yeterli.)
+
+Öğrencini 6 saat sonraki sınavına çalıştırıp günü kurtarabilecek misin?"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Isim" type="LineEdit" parent="MarginContainer/Control2/MarginContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+placeholder_text = "İsmini Gir..."
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/Control2/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="Kolay" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="Kolay" type="Button" parent="MarginContainer/Control2/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
-text = "Kolay
-"
+text = "Yavaş"
 
-[node name="Orta" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="Orta" type="Button" parent="MarginContainer/Control2/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
 button_pressed = true
-text = "Orta"
+text = "Normal"
 
-[node name="Zor" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="Zor" type="Button" parent="MarginContainer/Control2/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
-text = "Zor"
+text = "Hızlı
+"
 
-[node name="OyunaBasla" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="OyunaBasla" type="Button" parent="MarginContainer/Control2/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Oyuna Başla!"
 
-[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/Kolay" to="." method="_on_kolay_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/Orta" to="." method="_on_orta_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/Zor" to="." method="_on_zor_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/OyunaBasla" to="." method="_on_oyuna_basla_pressed"]
+[connection signal="text_changed" from="MarginContainer/Control2/MarginContainer/VBoxContainer/Isim" to="." method="_on_isim_text_changed"]
+[connection signal="pressed" from="MarginContainer/Control2/MarginContainer/VBoxContainer/HBoxContainer/Kolay" to="." method="_on_kolay_pressed"]
+[connection signal="pressed" from="MarginContainer/Control2/MarginContainer/VBoxContainer/HBoxContainer/Orta" to="." method="_on_orta_pressed"]
+[connection signal="pressed" from="MarginContainer/Control2/MarginContainer/VBoxContainer/HBoxContainer/Zor" to="." method="_on_zor_pressed"]
+[connection signal="pressed" from="MarginContainer/Control2/MarginContainer/VBoxContainer/OyunaBasla" to="." method="_on_oyuna_basla_pressed"]
