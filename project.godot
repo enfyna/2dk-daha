@@ -10,19 +10,25 @@ config_version=5
 
 [application]
 
-config/name="2dk Daha"
+config/name="2Dk Daha"
 run/main_scene="res://Sahneler/AnaMenu/AnaMenu.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
+boot_splash/bg_color=Color(0.1, 0.35, 0.6, 1)
+boot_splash/image="res://Resimler/Sınıf/splash.png"
+config/icon="res://Resimler/Sınıf/ikon.png"
+boot_splash/minimum_display_time=2000
 
 [autoload]
 
 Saat="*res://Objeler/Saat/Saat.gd"
 OyunYT="*res://Yonetici/OyunYT.gd"
+SesYT="*res://Yonetici/SesYT.gd"
 
 [display]
 
 window/size/viewport_width=1280
 window/size/viewport_height=720
+window/size/mode=3
 
 [gui]
 
