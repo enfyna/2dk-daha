@@ -4,7 +4,7 @@
 </p>
 
 <p align="center">
-  2 Dakika Daha!, <a href="https://itch.io/jam/atujam">ATUJAM 2024</a> game jam yarışması için 72 saatte yapmış olduğum oyundur.
+  2 Dakika Daha!, <a href="https://itch.io/jam/atujam">ATUJAM 2024</a> game jam yarışması için 72 saatte yapmış olduğum oyundur. 44 oyun arasından 13. olmuştur.
   <br>
   <br>
 </p>
