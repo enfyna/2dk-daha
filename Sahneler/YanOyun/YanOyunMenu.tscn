@@ -16,7 +16,7 @@
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6rmbq"]
 
-[node name="YanOyunMenu" type="Control" node_paths=PackedStringArray("ButonContainer", "YanOyunOynaButonu", "AkisSayisi", "PuanGosterge", "CevapGosterge", "Particles")]
+[node name="YanOyunMenu" type="Control" node_paths=PackedStringArray("YanOyunOynaButonu", "AkisSayisi", "PuanGosterge", "CevapGosterge", "Particles")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -25,7 +25,6 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_gqxiw")
 script = ExtResource("2_yjt87")
-ButonContainer = NodePath("HBoxContainer/MarginContainer/YanOyunButonContainer")
 YanOyunlar = [ExtResource("3_23q2a"), ExtResource("4_jgvxs"), ExtResource("5_vk6im"), ExtResource("6_xf5pm"), ExtResource("7_5v8fx"), ExtResource("8_djtn0")]
 YanOyunOynaButonu = NodePath("HBoxContainer/Control/Control/OgrenciKontrolEt")
 AkisSayisi = NodePath("HBoxContainer/Control2/Control3/AspectRatioContainer/AkisSayisi")
